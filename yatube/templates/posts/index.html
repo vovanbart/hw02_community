@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ text }}
+<h2>Последние обновления на сайте</h2>
 {% for post in posts %}
-  {{ posts }}
   <ul>
     <li>
       Автор: {{ post.author.get_full_name }}
@@ -10,6 +9,8 @@
     <li>
       Дата публикации: {{ post.pub_date|date:"d.m.Y" }}
     </li>
+    <li>
+      Группа: {{post.group.slug}}
   </ul>
   <p>{{ post.text }}</p>
   {% if post.group.slug %}
