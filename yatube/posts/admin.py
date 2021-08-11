@@ -17,9 +17,13 @@ class PostAdmin(admin.ModelAdmin):
     empty_value_display = '-пусто-'
 
 
-# При регистрации модели Post источником конфигурации для неё назначаем
-# класс PostAdmin
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ("pk", "title", "description")
+    search_fields = ("title",)
+    list_filter = ("title",)
+    empty_value_display = '-пусто-'
+
+
 admin.site.register(Post, PostAdmin)
 
-
-admin.site.register(Group)
+admin.site.register(Group, GroupAdmin)
