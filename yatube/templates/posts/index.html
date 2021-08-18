@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+<title>Главная страница</title>
 {% block content %}
-<h2>Последние обновления на сайте</h2>
+<h2 style="text-align: center; margin-bottom: 50px">Последние обновления на сайте</h2>
 {% for post in posts %}
   <ul>
     <li>
@@ -9,10 +10,11 @@
     <li>
       Дата публикации: {{ post.pub_date|date:'d E Y' }}
     </li>
+    <li>
+      Группа: <a href="{% url 'posts:group_list' post.group.slug %}">{{ post.group }}</a>
   </ul>
   <p>{{ post.text }}</p>
   {% if post.group %}
-    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
   {% endif %}
   {% if not forloop.last %}
     <hr>
